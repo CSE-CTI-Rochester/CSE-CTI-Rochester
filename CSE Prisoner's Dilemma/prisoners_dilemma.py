@@ -194,15 +194,21 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     #
     elif player == 4:
         if getting_team_name:
-            return 'betray every 3rd round'
+            return '50% ers'
         else:
             # use history, opponent_history, score, opponent_score
             # to compute your strategy
             size = len(history)
-            if(size%3==0): #the number of rounds played is a multiple of 3
+            if(size==0): #if the first round betray
                 return 'c'
-            else:
+            if(size==1): #if the second round collude
                 return 'b'
+            opponent_betrays=opponent_history.count('b')*1.0 # determines how many times opponent betrays
+            percent_betray=opponent_betrays/size  # determines percentage of betraying
+            if percent_betray < 0.5:  # if average colluder we will collude
+                return 'b'
+            else:
+                return 'c'  # if average betrayer we betray
     
     
     
