@@ -205,10 +205,10 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
                 return 'b'
             opponent_betrays=opponent_history.count('b')*1.0 # determines how many times opponent betrays
             percent_betray=opponent_betrays/size  # determines percentage of betraying
-            if percent_betray < 0.5:  # if average colluder we will collude
+            if percent_betray < 0.7:  # if average colluder we will betray
                 return 'b'
             else:
-                return 'c'  # if average betrayer we betray
+                return 'c'  # if average betrayer we colude
     
     
     
